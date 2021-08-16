@@ -40,7 +40,9 @@ RUN cd /tmp/ && git clone --branch 1.18 https://gitlab.freedesktop.org/gstreamer
         -Dvaapi=enabled \
         build && \
       cd subprojects/gst-plugins-bad && cp /wpe.patch . && git apply wpe.patch && \
-      cd ../.. && \
+
+RUN cd /tmp/ && \
+      cd gst-build && \
       ninja -j 16 -C build && \
       meson install -C build && \
       sudo ldconfig
