@@ -22,7 +22,7 @@ RUN cd /tmp/ && git clone --branch v3.9.1 https://github.com/nlohmann/json.git &
         cd wpebackend-fdo-1.8.0 && \
         cmake -DCMAKE_BUILD_TYPE=Release . && make && make install && ldconfig  && \
 
-    cd /tmp && git clone https://github.com/catchorg/Catch2.git && cd Catch2 && git checkout v2.13.0 && cmake -Bbuild -H. -DBUILD_TESTING=OFF && sudo cmake --build build/ --target install  && \
+    cd /tmp && git clone https://github.com/catchorg/Catch2.git && cd Catch2 && git checkout v2.13.0 && cmake -Bbuild -H. -DBUILD_TESTING=OFF && sudo cmake --build build/ --target install
 
 RUN cd /tmp/ && git clone --branch 1.18 https://gitlab.freedesktop.org/gstreamer/gst-build.git  && \
 
@@ -43,7 +43,7 @@ RUN cd /tmp/ && git clone --branch 1.18 https://gitlab.freedesktop.org/gstreamer
       cd ../.. && \
       ninja -j 8 -C build && \
       meson install -C build && \
-      sudo ldconfig  && \
+      sudo ldconfig
 
 RUN cd /tmp && git clone --depth 1 --branch webkit-2.30 https://github.com/Igalia/webkit.git WebKit && \
         cd /tmp/WebKit && \
