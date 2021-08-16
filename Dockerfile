@@ -41,7 +41,7 @@ RUN cd /tmp/ && git clone --branch 1.18 https://gitlab.freedesktop.org/gstreamer
         build && \
       cd subprojects/gst-plugins-bad && cp /wpe.patch . && git apply wpe.patch && \
       cd ../.. && \
-      ninja -j 8 -C build && \
+      ninja -j 16 -C build && \
       meson install -C build && \
       sudo ldconfig
 
@@ -49,7 +49,7 @@ RUN cd /tmp && git clone --depth 1 --branch webkit-2.30 https://github.com/Igali
         cd /tmp/WebKit && \
         cp /pulseaudio.patch . && git apply pulseaudio.patch && \
         cmake -DPORT=WPE -DENABLE_WEB_RTC=ON -DENABLE_MINIBROWSER=OFF -DCMAKE_BUILD_TYPE=Release -DENABLE_MEDIA_STREAM=ON -DENABLE_WPE_QT_API=OFF -GNinja . && \
-        ninja -j 8 && ninja install && ldconfig && \
+        ninja -j 16 && ninja install && ldconfig && \
         rm -rf /tmp/WebKit
 
 RUN cd /tmp/gst-build &&  meson build --reconfigure && ninja -C build && meson install -C build && ldconfig && rm -rf /tmp/*
